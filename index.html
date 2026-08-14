@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1224">
+<title>Билетик — открытка-приглашение на свидание</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎟️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Golos+Text:wght@400;500;600;700;800&family=Caveat:wght@500;700&family=Unbounded:wght@500;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="glbg" aria-hidden="true"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="bg" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<button class="zen-exit" id="zenExit" type="button">✕ превью автора — выйти</button>
+<button class="snd-btn" id="sndBtn" type="button" aria-label="включить/выключить звук">🔊</button>
+<div id="yay" aria-hidden="true"><div class="yy">ДА! ♥</div></div>
+
+<header class="top">
+  <a class="logo" href="#/" data-go="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.5a2.5 2.5 0 0 0 0 5V16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1.5a2.5 2.5 0 0 0 0-5z"/><path d="M14 6v2.5M14 11v2M14 15.5V18" stroke-dasharray="1.5 2.5"/></svg>
+    Билетик<span class="hh" aria-hidden="true">♥</span>
+  </a>
+  <nav id="navHome" aria-label="Основная навигация">
+    <a href="#vit">Витрина</a>
+    <a href="#how">Как это работает</a>
+  </nav>
+  <button class="btn sm" data-go="create" type="button" style="margin-left:auto">Создать открытку</button>
+</header>
+
+<main>
+<section class="view active" id="v-home" aria-label="Главная">
+  <div class="wrap hero">
+    <div class="hero-l">
+      <p class="eyebrow reveal">открытка-приглашение с живой анимацией</p>
+      <h1 class="reveal d1">Свидание начинается <em>с&nbsp;билета</em></h1>
+      <p class="lead reveal d2">Собери приглашение за минуту. Она сорвёт сургуч, поднимет клапан, вытащит билет, покрутит его в руках — и оторвёт корешок в знак «да». Ответ вернётся к тебе ссылкой на её билет.</p>
+      <span class="hand-note reveal d3">всё руками: потянуть, поднять, вытащить, оторвать ✍</span>
+      <div class="cta-row reveal d4">
+        <button class="btn big tk-cut" data-go="create" type="button">Создать открытку <span class="arr" aria-hidden="true">→</span></button>
+        <button class="btn btn-ghost big" data-demo type="button">Посмотреть пример</button>
+      </div>
+      <div class="facts reveal d5">
+        <div><b>6</b><span>анимированных билетов</span></div><i aria-hidden="true"></i>
+        <div><b>360°</b><span>билет крутится в руках</span></div><i aria-hidden="true"></i>
+        <div><b>0</b><span>баз данных — всё в ссылке</span></div>
+      </div>
+    </div>
+    <div class="hero-r reveal d2">
+      <div class="fan-glow" aria-hidden="true"></div>
+      <div class="fan" id="fan" role="region" aria-label="Примеры билетов"></div>
+    </div>
+  </div>
+
+  <div class="marq" aria-hidden="true"><div class="marq-in" id="marqIn"></div></div>
+
+  <section class="sec wrap" id="vit">
+    <div class="sec-head reveal">
+      <h2>Витрина билетов</h2>
+      <p class="note">наведи курсор — <b>каждый оживает и ловит свет</b></p>
+    </div>
+    <div class="shelf" id="shelf" role="region" aria-label="Примеры разных типов билетов"></div>
+  </section>
+
+  <section class="sec wrap" id="how">
+    <div class="sec-head reveal"><h2>Как это устроено</h2></div>
+    <div class="route" role="list">
+      <div class="stop reveal" role="listitem"><span class="num" aria-hidden="true">01</span><h3>Собери</h3><p>Повод, имя, послание от руки и варианты дат — или готовый план.</p><span class="hand-tag">превью живое</span></div>
+      <div class="stop reveal d1" role="listitem"><span class="num" aria-hidden="true">02</span><h3>Сорви пломбу</h3><p>Она зажимает сургуч и тянет: трещины растут, свет сочится изнутри — пломба крошится.</p><span class="hand-tag">хрусть!</span></div>
+      <div class="stop reveal d2" role="listitem"><span class="num" aria-hidden="true">03</span><h3>Билет в руках</h3><p>Клапан вверх, билет наружу: крутится на 360°, голография, ответ на обороте.</p><span class="hand-tag">оторви корешок</span></div>
+      <div class="stop reveal d3" role="listitem"><span class="num" aria-hidden="true">04</span><h3>Ответ летит назад</h3><p>Она жмёт «отправить ему» — и ты открываешь её билет: выбор, записка, штамп.</p><span class="hand-tag">без базы данных</span></div>
+    </div>
+  </section>
+
+  <div class="cta-band wrap reveal">
+    <h2>Чья-то пятница уже ждёт твой ход</h2>
+    <button class="btn big tk-cut" data-go="create" type="button">Собрать приглашение <span class="arr" aria-hidden="true">→</span></button>
+  </div>
+</section>
+
+<section class="view" id="v-create" aria-label="Конструктор билета">
+  <div class="wrap">
+    <div class="cr-head">
+      <button class="btn-link" data-go="home" type="button">← на главную</button>
+      <div class="cr-steps" id="crSteps" aria-label="Шаги создания">
+        <span class="cr-dot on"><i>1</i>повод</span><span class="cr-line" aria-hidden="true"></span>
+        <span class="cr-dot"><i>2</i>детали</span><span class="cr-line" aria-hidden="true"></span>
+        <span class="cr-dot"><i>3</i>ссылка</span>
+      </div>
+    </div>
+    <div class="steps"><div class="track" id="track">
+      <div class="step" role="tabpanel" aria-label="Шаг 1: повод">
+        <h2 class="st-title">Куда зовём?</h2>
+        <span class="st-sub">выбери повод — анимация билета соберётся под него</span>
+        <div class="oc-grid" id="ocGrid" role="radiogroup"></div>
+      </div>
+      <div class="step" role="tabpanel" aria-label="Шаг 2: детали">
+        <h2 class="st-title">Детали открытки</h2>
+        <span class="st-sub">справа — живое превью: наведи на билет, он наклоняется и ловит свет</span>
+        <div class="s2-grid">
+          <div>
+            <div class="fld"><label for="fTo">Её имя</label><input class="inp" id="fTo" type="text" placeholder="например, Аня" maxlength="30" autocomplete="off"></div>
+            <div class="fld"><label for="fFrom">От кого</label><input class="inp" id="fFrom" type="text" placeholder="например, Миша" maxlength="30" autocomplete="off"></div>
+            <div class="fld"><label for="fMsg">Послание <em>полетит запиской</em></label><textarea class="inp" id="fMsg" maxlength="120" placeholder="пара тёплых слов…"></textarea></div>
+            <div class="fld"><label>Режим билета</label>
+              <div class="seg" id="modeSeg" role="radiogroup">
+                <button type="button" data-mode="choice" class="on" role="radio" aria-checked="true">Она выбирает</button>
+                <button type="button" data-mode="fixed" role="radio" aria-checked="false">Всё решено мной</button>
+              </div>
+            </div>
+            <div id="choiceBox">
+              <div class="opt-group"><label>Даты <em>— она выберет одну</em></label>
+                <div class="opt-add"><input class="inp" type="date" id="inDate"><button class="btn-mini" data-add="dates" type="button" aria-label="Добавить дату">+</button></div>
+                <div class="chips" id="chDates" role="list"></div></div>
+              <div class="opt-group"><label>Время</label>
+                <div class="opt-add"><input class="inp" type="time" id="inTime"><button class="btn-mini" data-add="times" type="button" aria-label="Добавить время">+</button></div>
+                <div class="chips" id="chTimes" role="list"></div></div>
+              <div class="opt-group"><label>Куда</label>
+                <div class="opt-add"><input class="inp" id="inPlace" type="text" placeholder="например, «Кинотеатр Октябрь»" maxlength="60"><button class="btn-mini" data-add="places" type="button" aria-label="Добавить место">+</button></div>
+                <div class="chips" id="chPlaces" role="list"></div></div>
+            </div>
+            <div id="fixedBox" style="display:none">
+              <div class="opt-group">
+                <label>План вечера</label>
+                <div class="opt-add" style="flex-wrap:wrap"><input class="inp" type="date" id="fDate" style="flex:1;min-width:150px"><input class="inp" type="time" id="fTime" style="flex:1;min-width:110px"></div>
+                <div class="opt-add" style="margin-top:8px"><input class="inp" id="fPlace" type="text" placeholder="место: куда идёте" maxlength="60"></div>
+              </div>
+            </div>
+            <div class="form-nav">
+              <button class="btn btn-ghost" data-step="0" type="button">← Назад</button>
+              <button class="btn" id="toStep3" type="button">Создать ссылку <span class="arr" aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <aside class="pv"><div class="pv-label"><span aria-hidden="true"></span>живой предпросмотр</div><div id="pvSlot"></div></aside>
+        </div>
+      </div>
+      <div class="step" role="tabpanel" aria-label="Шаг 3: готово">
+        <div class="s3-box">
+          <h2 class="st-title">Открытка готова ✦</h2>
+          <span class="st-sub">отправь ей ссылку; её «да» вернётся ссылкой на её билет</span>
+          <div class="link-row">
+            <input class="inp" id="linkOut" readonly aria-label="Ссылка на открытку">
+            <button class="btn" id="copyBtn" type="button">Копировать</button>
+          </div>
+          <div class="s3-actions">
+            <button class="btn btn-ghost" id="openAsHer" type="button">Открыть, как она ♥</button>
+            <button class="btn-link" data-step="1" type="button">← изменить детали</button>
+            <button class="btn-link" id="anew" type="button">создать новую</button>
+          </div>
+          <div class="s3-ticket" id="s3Ticket" aria-label="Предпросмотр готовой открытки"></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="view" id="v-card" aria-label="Открытка для получателя">
+  <div class="rstage active" id="rsEnv">
+    <div class="env-rays" aria-hidden="true"></div>
+    <span class="ember" style="left:22%;--ex:40px;--ec:#f0b64b" aria-hidden="true"></span>
+    <span class="ember" style="left:34%;--ex:-30px;--ec:#ff6f61;--dl:1.2s" aria-hidden="true"></span>
+    <span class="ember" style="left:58%;--ex:50px;--ec:#f0b64b;--dl:2.1s" aria-hidden="true"></span>
+    <span class="ember" style="left:70%;--ex:-40px;--ec:#ff9db0;--dl:.6s" aria-hidden="true"></span>
+    <span class="ember" style="left:80%;--ex:24px;--ec:#f0b64b;--dl:3s" aria-hidden="true"></span>
+    <span class="mote" style="left:30%;top:38%;--mx:26px" aria-hidden="true"></span>
+    <span class="mote" style="left:46%;top:52%;--mx:-20px;--dl:1.4s" aria-hidden="true"></span>
+    <span class="mote" style="left:62%;top:40%;--mx:30px;--dl:2.6s" aria-hidden="true"></span>
+    <span class="mote" style="left:72%;top:60%;--mx:-26px;--dl:3.8s" aria-hidden="true"></span>
+    <p class="r-hint" id="rHint" aria-live="polite">зажми пломбу и потяни… ✉</p>
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Конверт с билетом">
+      <div class="env-float" id="envFloat">
+        <div class="env-light" aria-hidden="true"></div>
+        <div class="env-shadow" aria-hidden="true"></div>
+        <div class="env-in" id="envIn"></div>
+        <div class="env-pocket" aria-hidden="true">
+          <div class="ep-addr"><span class="hand" id="envAddr">для тебя</span><small>открыть бережно</small></div>
+          <div class="ep-stamp"><span>♥</span><small>С ЛЮБОВЬЮ</small></div>
+          <div class="ep-post"></div>
+          <div class="ep-edge"></div>
+        </div>
+        <div class="env-noise" aria-hidden="true"></div>
+        <div class="env-glare" aria-hidden="true"></div>
+        <div class="env-flap" id="envFlap"><div class="flap-f"></div><div class="flap-b"></div></div>
+        <div class="seal-glow" id="sealGlow" aria-hidden="true"></div>
+        <button class="seal" id="seal" type="button" aria-label="Сорвать пломбу">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <defs>
+              <radialGradient id="wg" cx="35%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#e59aa6"/><stop offset="45%" stop-color="#b04356"/><stop offset="100%" stop-color="#7c1f2e"/>
+              </radialGradient>
+              <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <path d="M60 8C78 6 96 16 102 32 108 46 106 62 98 76 90 92 74 102 58 102 42 102 26 94 18 80 10 66 10 46 18 32 26 18 42 10 60 8Z" fill="url(#wg)"/>
+            <path d="M30 88c-4 5-10 6-12 3-2-4 2-9 7-10z" fill="#8c2537"/>
+            <path d="M92 26c5-1 10 1 10 5 0 4-6 5-10 2z" fill="#8c2537"/>
+            <path d="M78 96c3 4 2 9-2 9-4 1-6-4-4-8z" fill="#8c2537"/>
+            <circle cx="60" cy="56" r="36" fill="none" stroke="rgba(90,15,30,.55)" stroke-width="2.5"/>
+            <circle cx="60" cy="56" r="39.5" fill="none" stroke="rgba(255,215,220,.18)" stroke-width="1"/>
+            <ellipse cx="47" cy="36" rx="14" ry="8" fill="#fff" opacity=".22" filter="url(#soft)"/>
+            <path d="M60 80C46 68 36 60 36 49 36 41 42 36 49 36 53 36 57 38 60 43 63 38 67 36 71 36 78 36 84 41 84 49 84 60 74 68 60 80Z" fill="#5e1524"/>
+            <path d="M60 78C47 67 38 59 38 49 38 42 43 38 49 38" fill="none" stroke="rgba(255,190,200,.25)" stroke-width="2"/>
+            <path class="crack" pathLength="1" d="M40 22 46 30 42 36 50 44 46 52 54 60"/>
+            <path class="crack" pathLength="1" d="M82 34 74 40 78 48 68 54 72 62 64 70"/>
+            <path class="crack" pathLength="1" d="M58 12 60 22 54 28 58 36"/>
+          </svg>
+        </button>
+        <div class="env-flash" aria-hidden="true"></div>
+        <span class="tw-spark" style="left:-9%;top:16%" aria-hidden="true"></span>
+        <span class="tw-spark" style="right:-7%;top:42%;animation-delay:.9s" aria-hidden="true"></span>
+        <span class="tw-spark" style="left:10%;bottom:-10%;animation-delay:1.7s" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="rstage" id="rsMain">
+    <div class="reveal-stage" id="revealStage" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="r-ticket-wrap" id="rTicketWrap">
+        <div class="drag-hint" id="dragHint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 11.5V5.5a1.5 1.5 0 0 1 3 0v5m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v3.5c0 3.5-2.5 6-6 6s-5-1.5-6.5-4.5L4 11.8c-.8-1.4.8-2.8 2-1.8l2 1.8z"/></svg><span id="dragHintTx">зажми и крутни</span></div>
+        <div class="note-fly" id="noteFly" aria-hidden="true"></div>
+        <div class="flip" id="flip" role="button" tabindex="0" aria-label="Билет, поверните для ответа">
+          <div class="flip-in">
+            <div class="face f-front" id="rTicket"></div>
+            <div class="face f-back" id="rBack"></div>
+          </div>
+        </div>
+      </div>
+      <p class="r-cap" id="rCap" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v-reply" aria-label="Ответный билет">
+  <div class="reply-wrap">
+    <p class="rep-kicker" id="repKicker"></p>
+    <div class="rep-ticket" id="repTicket"></div>
+    <div class="rep-sum" id="repSum"></div>
+    <p class="rep-note hand" id="repNote"></p>
+    <p class="rep-meta" id="repMeta"></p>
+    <div class="rep-actions">
+      <button class="btn big tk-cut" data-go="create" type="button">Собрать свой билет <span class="arr" aria-hidden="true">→</span></button>
+      <button class="btn btn-ghost big" data-go="home" type="button">на главную</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div>© «Билетик» — открытки, на которые отвечают</div>
+  <div class="hand">сделано с ♥ для тех, кто зовёт первым</div>
+  <div>без базы данных: билет и ответ живут в ссылках</div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
